@@ -1,3 +1,4 @@
+import { ThemeContext, ThemeContextProvider } from '@/context/ThemeContext'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import './globals.css'
@@ -14,13 +15,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className='container'>
-          <div className='wrapper'>
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
-        </div>
+        <ThemeContextProvider>
+          {/* <ThemeContext> */}
+            <div className='container'>
+              <div className='wrapper'>
+                <Navbar />
+                {children}
+                <Footer />
+              </div>
+            </div>
+          {/* </ThemeContext> */}
+        </ThemeContextProvider>
       </body>
     </html>
   )
