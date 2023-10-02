@@ -15,5 +15,5 @@
     height: 15px;
     border-radius: 50%;
     position: absolute;
-    color: white;
+    color: white !important;
   }
