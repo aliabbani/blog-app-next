@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import styles from './navbar.module.css';
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +7,8 @@ import ThemeToggle from '../themeToggle/ThemeToggle';
 import AuthLinks from '../authLinks/AuthLinks';
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.container}>
         <div className={styles.social}>
@@ -18,8 +21,8 @@ const Navbar = () => {
         <div className={styles.links}>
           <ThemeToggle />
           <Link href="/" className={styles.link}>Homepage</Link>
-          <Link href="/" className={styles.link}>Contact</Link>
           <Link href="/" className={styles.link}>About</Link>
+          <Link href="/" className={styles.link}>Contact</Link>
           <AuthLinks />
         </div>
     </div>
