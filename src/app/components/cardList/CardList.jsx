@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./cardList.module.css";
 import Card from "../card/card";
-// import Pagination from "../pagination/Pagination";
+import Pagination from "../pagination/Pagination";
 // import Image from "next/image";
 
 
@@ -15,6 +15,7 @@ const CardList = () => {
         <Card />
         <Card />
       </div>
+      <Pagination />
     </div>
   );
 };
