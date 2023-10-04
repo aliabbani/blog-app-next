@@ -13,12 +13,12 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
+  refresh_token      String?  
+  access_token       String?  
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?  @db.Text
+  id_token           String?  
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -52,28 +52,4 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Post {
-  id        String    @id @default(cuid()) @map("_id")
-  createdAt DateTime  @default(now())
-  slug      String    @unique
-  title     String
-  desc      String
-  img       String?
-  views     Int       @default(0)
-  catSlug   String
-  cat       Category  @relation(fields: [catSlug], references: [slug])
-  userEmail String
-  user      User      @relation(fields: [userEmail], references: [email])
-  comments  Comment[]
-}
-
-model Comment {
-  id        String   @id @default(cuid()) @map("_id")
-  createdAt DateTime @default(now())
-  desc      String
-  userEmail String
-  user      User     @relation(fields: [userEmail], references: [email])
-  postSlug  String
-  post      Post     @relation(fields: [postSlug], references: [slug])
-}
 
