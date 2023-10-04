@@ -11,14 +11,13 @@ const LoginPage = () => {
   console.log("data", data);
 
   const router = useRouter();
-
+  
   useEffect(() => {
     if (status === "authenticated") {
       // Redirect to the home page
       router.push("/");
     }
   }, [status]);
-
 
   if (status === "loading") {
     return <div className={styles.loading}>Loading...</div>;
