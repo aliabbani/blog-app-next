@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import styles from "./writePage.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "react-quill/dist/quill.bubble.css";
 import ReactQuill from "react-quill";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const WritePage = () => {
 
@@ -14,6 +16,23 @@ const WritePage = () => {
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+
+  const { status } = useSession();
+
+  console.log("status write", status);
+
+  const router = useRouter();
+  
+  useEffect(() => {
+    if (status === "authenticated") {
+      // Redirect to the home page
+      router.push("/");
+    }
+  }, [status]);
+
+  if (status === "loading") {
+    return <div className={styles.loading}>Loading...</div>;
+  }
 
   return (
     <div className={styles.container}>
